@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="370.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="370.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="370.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -54,6 +53,9 @@
                         <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
+                  <Button layoutX="174.0" layoutY="332.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="229.0" layoutY="332.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="284.0" layoutY="332.0" mnemonicParsing="false" text="Button" />
                </children>
             </AnchorPane>
         </items>

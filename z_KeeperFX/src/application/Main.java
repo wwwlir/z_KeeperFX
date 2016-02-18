@@ -3,7 +3,10 @@ package application;
 import java.awt.BorderLayout;
 import java.io.IOException;
 
+import application.Model.Person;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -14,6 +17,21 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	Stage primaryStage;
 	BorderPane rootLayout;
+private ObservableList<Person> personData = FXCollections.observableArrayList();
+	
+	{
+		personData.add(new Person("aaaa", "bbbbb"));
+		personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Ruth", "Mueller"));
+        personData.add(new Person("Heinz", "Kurz"));
+        personData.add(new Person("Cornelia", "Meier"));
+        personData.add(new Person("Werner", "Meyer"));
+        personData.add(new Person("Lydia", "Kunz"));
+        personData.add(new Person("Anna", "Best"));
+        personData.add(new Person("Stefan", "Meier"));
+        personData.add(new Person("Martin", "Mueller"));
+	}
+	
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -58,4 +76,7 @@ public class Main extends Application {
 		AnchorPane mainLayout = (AnchorPane)loader.load();
 		rootLayout.setCenter(mainLayout);
 	}
+	public ObservableList<Person> getPersonData() {
+        return personData;
+    }
 }
