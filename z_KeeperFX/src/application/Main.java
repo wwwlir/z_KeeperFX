@@ -79,4 +79,7 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 	public ObservableList<Person> getPersonData() {
         return personData;
     }
+	public Stage getPrimaryStage() {
+        return primaryStage;
+    }
 }
