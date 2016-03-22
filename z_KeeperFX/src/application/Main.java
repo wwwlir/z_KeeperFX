@@ -1,6 +1,5 @@
 package application;
 	
-import java.awt.BorderLayout;
 import java.io.IOException;
 
 import application.Model.Person;
@@ -74,6 +73,7 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("View/MainLayout.fxml"));
 		AnchorPane mainLayout = (AnchorPane)loader.load();
+		
 		rootLayout.setCenter(mainLayout);
 	}
 	public ObservableList<Person> getPersonData() {

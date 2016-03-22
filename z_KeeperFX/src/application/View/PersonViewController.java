@@ -1,5 +1,6 @@
-package application;
+package application.View;
 
+import application.Main;
 import application.Model.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
