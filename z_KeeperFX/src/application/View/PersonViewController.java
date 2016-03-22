@@ -23,11 +23,11 @@ public class PersonViewController {
     @FXML
     private Label lastNameLabel;
     @FXML
-    private Label streetLabel;
+    private Label addressLabel;
     @FXML
-    private Label postalCodeLabel;
+    private Label phoneNumbersLabel;
     @FXML
-    private Label cityLabel;
+    private Label noteLabel;
     @FXML
     private Label birthdayLabel;
 
@@ -78,9 +78,9 @@ public class PersonViewController {
             // Fill the labels with info from the person object.
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
-            streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
-            cityLabel.setText(person.getCity());
+            addressLabel.setText(person.getAddress());
+            phoneNumbersLabel.setText(person.getPhoneNumbers());
+            noteLabel.setText(person.getNote());
 
             // TODO: We need a way to convert the birthday into a String! 
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
@@ -88,9 +88,9 @@ public class PersonViewController {
             // Person is null, remove all the text.
             firstNameLabel.setText("");
             lastNameLabel.setText("");
-            streetLabel.setText("");
-            postalCodeLabel.setText("");
-            cityLabel.setText("");
+            addressLabel.setText("");
+            phoneNumbersLabel.setText("");
+            noteLabel.setText("");
             birthdayLabel.setText("");
         }
     }

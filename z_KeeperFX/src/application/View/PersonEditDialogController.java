@@ -20,11 +20,11 @@ public class PersonEditDialogController {
     @FXML
     private TextField lastNameField;
     @FXML
-    private TextField streetField;
+    private TextField addressField;
     @FXML
-    private TextField postalCodeField;
+    private TextField phoneNumbersField;
     @FXML
-    private TextField cityField;
+    private TextField noteField;
     @FXML
     private TextField birthdayField;
 
@@ -60,9 +60,9 @@ public class PersonEditDialogController {
 
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
-        streetField.setText(person.getStreet());
-        postalCodeField.setText(Integer.toString(person.getPostalCode()));
-        cityField.setText(person.getCity());
+        addressField.setText(person.getAddress());
+        phoneNumbersField.setText(person.getPhoneNumbers());
+        noteField.setText(person.getNote());
         birthdayField.setText(DateUtil.format(person.getBirthday()));
         birthdayField.setPromptText("dd.mm.yyyy");
     }
@@ -84,9 +84,9 @@ public class PersonEditDialogController {
         if (isInputValid()) {
             person.setFirstName(firstNameField.getText());
             person.setLastName(lastNameField.getText());
-            person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
-            person.setCity(cityField.getText());
+            person.setAddress(addressField.getText());
+            person.setPhoneNumbers(phoneNumbersField.getText());
+            person.setNote(noteField.getText());
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
 
             okClicked = true;
@@ -116,22 +116,15 @@ public class PersonEditDialogController {
         if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
             errorMessage += "No valid last name!\n"; 
         }
-        if (streetField.getText() == null || streetField.getText().length() == 0) {
+        if (addressField.getText() == null || addressField.getText().length() == 0) {
             errorMessage += "No valid street!\n"; 
         }
 
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+        if (phoneNumbersField.getText() == null || phoneNumbersField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n"; 
-        } else {
-            // try to parse the postal code into an int.
-            try {
-                Integer.parseInt(postalCodeField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n"; 
-            }
         }
 
-        if (cityField.getText() == null || cityField.getText().length() == 0) {
+        if (noteField.getText() == null || noteField.getText().length() == 0) {
             errorMessage += "No valid city!\n"; 
         }
 

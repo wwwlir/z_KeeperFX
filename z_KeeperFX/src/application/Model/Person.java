@@ -15,10 +15,13 @@ import javafx.beans.property.StringProperty;
 public class Person {
 	private final StringProperty firstName;
     private final StringProperty lastName;
-    private final StringProperty street;
-    private final IntegerProperty postalCode;
-    private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty address;
+    private final StringProperty phoneNumbers;
+    private final StringProperty note;
+//    private final StringProperty street;
+//    private final IntegerProperty postalCode;
+//    private final StringProperty city;
 
     /**
      * Default constructor.
@@ -38,9 +41,9 @@ public class Person {
         this.lastName = new SimpleStringProperty(lastName);
 
         // Some initial dummy data, just for convenient testing.
-        this.street = new SimpleStringProperty("some street");
-        this.postalCode = new SimpleIntegerProperty(1234);
-        this.city = new SimpleStringProperty("some city");
+        this.address = new SimpleStringProperty("");
+        this.phoneNumbers = new SimpleStringProperty("+7");
+        this.note = new SimpleStringProperty("");
         this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
     }
 
@@ -68,40 +71,40 @@ public class Person {
         return lastName;
     }
 
-    public String getStreet() {
-        return street.get();
+    public String getAddress() {
+        return address.get();
     }
 
-    public void setStreet(String street) {
-        this.street.set(street);
+    public void setAddress(String address) {
+        this.address.set(address);
     }
 
-    public StringProperty streetProperty() {
-        return street;
+    public StringProperty addressProperty() {
+        return address;
     }
 
-    public int getPostalCode() {
-        return postalCode.get();
+    public String getPhoneNumbers() {
+        return phoneNumbers.get();
     }
 
-    public void setPostalCode(int postalCode) {
-        this.postalCode.set(postalCode);
+    public void setPhoneNumbers(String phoneNumbers) {
+        this.phoneNumbers.set(phoneNumbers);
     }
 
-    public IntegerProperty postalCodeProperty() {
-        return postalCode;
+    public StringProperty phoneNumbersProperty() {
+        return phoneNumbers;
     }
 
-    public String getCity() {
-        return city.get();
+    public String getNote() {
+        return note.get();
     }
 
-    public void setCity(String city) {
-        this.city.set(city);
+    public void setNote(String city) {
+        this.note.set(city);
     }
 
     public StringProperty cityProperty() {
-        return city;
+        return note;
     }
 
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
