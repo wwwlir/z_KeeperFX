@@ -19,9 +19,7 @@ public class Person {
     private final StringProperty address;
     private final StringProperty phoneNumbers;
     private final StringProperty note;
-//    private final StringProperty street;
-//    private final IntegerProperty postalCode;
-//    private final StringProperty city;
+
 
     /**
      * Default constructor.
