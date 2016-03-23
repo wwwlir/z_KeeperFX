@@ -1,6 +1,7 @@
 package application.View;
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
@@ -117,4 +118,16 @@ public class RootLayoutController {
     private void handleExit() {
         System.exit(0);
     }
+    
+    
+    @FXML
+    public void showMainView(){
+    	try {
+			mainApp.showMainLayout();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
 }

@@ -94,11 +94,7 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 	        e.printStackTrace();
 	    }
 
-	    // Try to load last opened person file.
-	    File file = getPersonFilePath();
-	    if (file != null) {
-	        loadPersonDataFromFile(file);
-	    }
+
 	}
 	public void showMainLayout() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
@@ -134,6 +130,12 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
         } catch (Exception e) {
             e.printStackTrace();
         }
+		
+	    // Try to load last opened person file.
+	    File file = getPersonFilePath();
+	    if (file != null) {
+	        loadPersonDataFromFile(file);
+	    }
 	}
 	public boolean showPersonEditDialog(Person person) {
 	    try {
