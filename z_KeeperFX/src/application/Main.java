@@ -131,7 +131,7 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
             e.printStackTrace();
         }
 		
-	    // Try to load last opened person file.
+	    // Загружаем файл при открытии страницы контактов
 	    File file = getPersonFilePath();
 	    if (file != null) {
 	        loadPersonDataFromFile(file);
@@ -258,5 +258,11 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 	                .masthead("Could not save data to file:\n" + file.getPath())
 	                .showException(e);
 	    }
+	}
+	public void loadPersonDataFromFirebird(){
+		
+	}
+	public void savePersonDataToFirebird(){
+		
 	}
 }
