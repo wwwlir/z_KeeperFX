@@ -23,5 +23,7 @@ public class FirefirdDAOFactory extends DAOFactory {
 		// TODO Auto-generated method stub
 		return new FirebirdPersonDAO(createConnection());
 	}
-
+	public DatabaseDAO getDatabaseDAO(){
+		return new FirebirdDatabaseDAO(createConnection());
+	}
 }

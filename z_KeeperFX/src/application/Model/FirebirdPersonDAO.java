@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.sql.RowSet;
 
+import javafx.collections.ObservableList;
+
 public class FirebirdPersonDAO implements PersonDAO {
 	
 	Connection conn;
@@ -53,6 +55,12 @@ public class FirebirdPersonDAO implements PersonDAO {
 	public void printPersons() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public ObservableList<Person> getPersonData() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

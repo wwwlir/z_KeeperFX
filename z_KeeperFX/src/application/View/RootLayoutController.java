@@ -11,39 +11,21 @@ import org.controlsfx.dialog.Dialogs;
 import application.Main;
 
 
-/**
- * The controller for the root layout. The root layout provides the basic
- * application layout containing a menu bar and space where other JavaFX
- * elements can be placed.
- * 
- * @author Marco Jakob
- */
 public class RootLayoutController {
 
     // Reference to the main application
     private Main mainApp;
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
-    /**
-     * Creates an empty address book.
-     */
     @FXML
     private void handleNew() {
         mainApp.getPersonData().clear();
         mainApp.setPersonFilePath(null);
     }
 
-    /**
-     * Opens a FileChooser to let the user select an address book to load.
-     */
     @FXML
     private void handleOpen() {
         FileChooser fileChooser = new FileChooser();
@@ -61,10 +43,6 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Saves the file to the person file that is currently open. If there is no
-     * open file, the "save as" dialog is shown.
-     */
     @FXML
     private void handleSave() {
         File personFile = mainApp.getPersonFilePath();
@@ -75,9 +53,6 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Opens a FileChooser to let the user select a file to save to.
-     */
     @FXML
     private void handleSaveAs() {
         FileChooser fileChooser = new FileChooser();
@@ -99,9 +74,6 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Opens an about dialog.
-     */
     @FXML
     private void handleAbout() {
         Dialogs.create()
@@ -111,14 +83,15 @@ public class RootLayoutController {
             .showInformation();
     }
 
-    /**
-     * Closes the application.
-     */
     @FXML
     private void handleExit() {
         System.exit(0);
     }
     
+    @FXML
+    private void handleSetting(){
+    	mainApp.showSettingEditDialog();
+    }
     
     @FXML
     public void showMainView(){

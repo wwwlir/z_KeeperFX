@@ -34,17 +34,9 @@ public class PersonViewController {
     // Reference to the main application.
     private Main mainApp;
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
     public PersonViewController() {
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
     @FXML
     private void initialize() {
     	// Initialize the person table with the two columns.
@@ -61,11 +53,6 @@ public class PersonViewController {
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
 
@@ -94,9 +81,7 @@ public class PersonViewController {
             birthdayLabel.setText("");
         }
     }
-    /**
-     * Called when the user clicks on the delete button.
-     */
+
     @FXML
     private void handleDeletePerson() {
     	int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
@@ -118,14 +103,10 @@ public class PersonViewController {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
+            mainApp.getPersonData().add(tempPerson);//Добавляет в коллекцию persondata, которая потом записывается в xml
         }
     }
 
-    /**
-     * Called when the user clicks the edit button. Opens a dialog to edit
-     * details for the selected person.
-     */
     @FXML
     private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();

@@ -16,6 +16,7 @@ import application.View.MainLayoutController;
 import application.View.PersonEditDialogController;
 import application.View.PersonViewController;
 import application.View.RootLayoutController;
+import application.View.SettingEditDialogController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,12 +32,14 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	Stage primaryStage;
 	BorderPane rootLayout;
-private ObservableList<Person> personData = FXCollections.observableArrayList();
+	private ObservableList<Person> personData = FXCollections.observableArrayList();
 	
 	{
 		personData.add(new Person("Last name", "First name"));
 	}
-	
+	public static void main(String[] args) {
+		launch(args);
+	}
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -49,43 +52,17 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-//		try {
-//			BorderPane root = new BorderPane();
-//			Scene scene = new Scene(root,400,400);
-//			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-//			primaryStage.setScene(scene);
-//			primaryStage.show();
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-	}
-	
-	public static void main(String[] args) {
-		launch(args);
 	}
 	
 	public void initRootLayout() throws IOException{
-//		FXMLLoader loader = new FXMLLoader();
-//		loader.setLocation(Main.class.getResource("View/RootLayout.fxml"));
-//		rootLayout = (BorderPane)loader.load();
-//		
-//		Scene scene = new Scene(rootLayout);
-//		primaryStage.setScene(scene);
-//		primaryStage.show();
 		try {
-	        // Load root layout from fxml file.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class
-	                .getResource("view/RootLayout.fxml"));
+	        loader.setLocation(Main.class.getResource("view/RootLayout.fxml"));
 	        rootLayout = (BorderPane) loader.load();
 
-	        // Show the scene containing the root layout.
 	        Scene scene = new Scene(rootLayout);
 	        primaryStage.setScene(scene);
 
-	        // Give the controller access to the main app.
 	        RootLayoutController controller = loader.getController();
 	        controller.setMainApp(this);
 
@@ -93,14 +70,11 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
-
-
 	}
 	public void showMainLayout() throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("View/MainLayout.fxml"));
 		AnchorPane mainLayout = (AnchorPane)loader.load();
-		
 		rootLayout.setCenter(mainLayout);
 		
 		MainLayoutController mainLController = loader.getController();
@@ -156,6 +130,37 @@ private ObservableList<Person> personData = FXCollections.observableArrayList();
 	        PersonEditDialogController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
 	        controller.setPerson(person);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+	
+	public boolean showSettingEditDialog(){
+		
+		try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(Main.class.getResource("view/SettingEditDialog.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Edit Person");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+
+	        // Set the person into the controller.
+	        SettingEditDialogController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+	        
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();

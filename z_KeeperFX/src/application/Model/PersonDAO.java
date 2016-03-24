@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import javax.sql.RowSet;
 
+import javafx.collections.ObservableList;
+
 public interface PersonDAO {
 	public int insertPerson();
 	public boolean deletePerson();
@@ -12,4 +14,5 @@ public interface PersonDAO {
 	public RowSet selectPersonRS();
 	public Collection selectPersonTO();
 	public void printPersons();
+	public ObservableList<Person> getPersonData();
 }

@@ -5,6 +5,7 @@ public abstract class DAOFactory {
 	public static final int XMLFILE = 2;
 	
 	public abstract PersonDAO getPersonDAO();
+	public abstract DatabaseDAO getDatabaseDAO();
 	
 	public static DAOFactory getDAOFactory(int whichFactory){
 		switch (whichFactory) {
