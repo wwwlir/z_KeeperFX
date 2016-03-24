@@ -1,6 +1,8 @@
 package application.Model;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 
 import javax.sql.RowSet;
@@ -16,8 +18,25 @@ public class FirebirdPersonDAO implements PersonDAO {
 	}
 
 	@Override
-	public int insertPerson() {
+	public int insertPerson(Person person) {
 		// TODO Auto-generated method stub
+		String strSQL = "insert into persons (fname, lname, address, phonenumbers, birthday) values ("
+				+"'"+person.getFirstName()+"',"
+				+"'"+person.getLastName()+"',"
+				+"'"+person.getAddress()+"',"
+				+"'"+person.getPhoneNumbers()+"',"
+				+"'"+person.getBirthday()+"'"
+				+ ")";
+		try {
+			Statement stmt = conn.createStatement();
+			stmt.execute(strSQL);
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 

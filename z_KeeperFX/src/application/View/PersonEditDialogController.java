@@ -1,6 +1,8 @@
 package application.View;
 
+import application.Model.DAOFactory;
 import application.Model.Person;
+import application.Model.PersonDAO;
 import application.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -88,7 +90,7 @@ public class PersonEditDialogController {
             person.setPhoneNumbers(phoneNumbersField.getText());
             person.setNote(noteField.getText());
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
-
+            
             okClicked = true;
             dialogStage.close();
         }

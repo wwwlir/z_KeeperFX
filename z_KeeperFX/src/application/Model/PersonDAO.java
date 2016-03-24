@@ -7,7 +7,7 @@ import javax.sql.RowSet;
 import javafx.collections.ObservableList;
 
 public interface PersonDAO {
-	public int insertPerson();
+	public int insertPerson(Person person);
 	public boolean deletePerson();
 	public Person findPerson();
 	public boolean updatePerson();

@@ -29,7 +29,7 @@ public class XMLFilePersonDAO implements PersonDAO {
 	}
 
 	@Override
-	public int insertPerson() {
+	public int insertPerson(Person person) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

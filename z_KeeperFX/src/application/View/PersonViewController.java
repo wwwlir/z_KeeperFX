@@ -1,7 +1,9 @@
 package application.View;
 
 import application.Main;
+import application.Model.DAOFactory;
 import application.Model.Person;
+import application.Model.PersonDAO;
 import application.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -33,12 +35,16 @@ public class PersonViewController {
 
     // Reference to the main application.
     private Main mainApp;
-
+    private PersonDAO personDAO;
+    
     public PersonViewController() {
     }
 
     @FXML
     private void initialize() {
+    	DAOFactory firebirdDAO = DAOFactory.getDAOFactory(DAOFactory.FIREBIRD);
+    	personDAO = firebirdDAO.getPersonDAO();
+    	
     	// Initialize the person table with the two columns.
         firstNameColumn.setCellValueFactory(
                 cellData -> cellData.getValue().firstNameProperty());
@@ -104,6 +110,7 @@ public class PersonViewController {
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);//Добавляет в коллекцию persondata, которая потом записывается в xml
+            personDAO.insertPerson(tempPerson);
         }
     }
 
