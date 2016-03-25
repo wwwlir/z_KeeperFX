@@ -8,9 +8,9 @@ import javafx.collections.ObservableList;
 
 public interface PersonDAO {
 	public int insertPerson(Person person);
-	public boolean deletePerson();
-	public Person findPerson();
-	public boolean updatePerson();
+	public boolean deletePerson(Person person);
+	public Person findPerson(Person person);
+	public boolean updatePerson(Person person);
 	public RowSet selectPersonRS();
 	public Collection selectPersonTO();
 	public void printPersons();

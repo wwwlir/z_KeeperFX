@@ -42,8 +42,7 @@ public class PersonViewController {
 
     @FXML
     private void initialize() {
-    	DAOFactory firebirdDAO = DAOFactory.getDAOFactory(DAOFactory.FIREBIRD);
-    	personDAO = firebirdDAO.getPersonDAO();
+    	
     	
     	// Initialize the person table with the two columns.
         firstNameColumn.setCellValueFactory(
@@ -93,6 +92,10 @@ public class PersonViewController {
     	int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
+            //DAO
+            DAOFactory firebirdDAO = DAOFactory.getDAOFactory(DAOFactory.FIREBIRD);
+        	personDAO = firebirdDAO.getPersonDAO();
+            personDAO.deletePerson(personTable.getSelectionModel().getSelectedItem());
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
@@ -110,6 +113,9 @@ public class PersonViewController {
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);//Добавляет в коллекцию persondata, которая потом записывается в xml
+//          DAO
+            DAOFactory firebirdDAO = DAOFactory.getDAOFactory(DAOFactory.FIREBIRD);
+        	personDAO = firebirdDAO.getPersonDAO();
             personDAO.insertPerson(tempPerson);
         }
     }
@@ -117,10 +123,16 @@ public class PersonViewController {
     @FXML
     private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+        DAOFactory firebirdDAO = DAOFactory.getDAOFactory(DAOFactory.FIREBIRD);
+    	personDAO = firebirdDAO.getPersonDAO();
+    	personDAO.findPerson(selectedPerson);
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
+//                DAO
+                
+                personDAO.updatePerson(selectedPerson);
             }
 
         } else {

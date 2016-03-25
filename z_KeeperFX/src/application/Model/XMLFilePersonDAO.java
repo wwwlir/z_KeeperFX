@@ -35,19 +35,19 @@ public class XMLFilePersonDAO implements PersonDAO {
 	}
 
 	@Override
-	public boolean deletePerson() {
+	public boolean deletePerson(Person person) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Person findPerson() {
+	public Person findPerson(Person person) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean updatePerson() {
+	public boolean updatePerson(Person person) {
 		// TODO Auto-generated method stub
 		if (file != null) {
 	        loadPersonDataFromFile(file);
